@@ -20,3 +20,14 @@ res_button.onclick = function() {
   }
 };
 
+var add_button = document.getElementById("add");
+add_button.onclick = function() {
+	var btn = document.createElement("BUTTON");
+	var btn_txt = document.createTextNode("mmmhhhmmm");
+	btn.appendChild(btn_txt);
+	var linebreak = document.createElement("br");
+	
+	document.getElementById("reward_list").appendChild(linebreak);
+	document.getElementById("reward_list").appendChild(btn);
+	
+};
