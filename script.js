@@ -38,18 +38,24 @@ add_button.addEventListener( 'click', function() {
 
 function create_entry() 
 {
-	var spn = document.createElement('span');
-	var btn = document.createElement("BUTTON");
 	var item_txt = prompt("What's the reward gon' be?");
 	var desc_txt = prompt("Whatcha gotta do?");
 	var targ = Number( prompt("How many days you gotta do it?") );
 	console.log(rewards)
-	rewards["rewards"].push( {"item":item_txt, "streak":0, "target":targ, "description":desc_txt} );
+	var index = rewards["rewards"].push( {"item":item_txt, "streak":0, "target":targ, "description":desc_txt} ) - 1;
 	
-	var btn_txt = document.createTextNode(item_txt);
+	return entry_html(index)
+	
+}
+
+function entry_html(index){
+	var entry = rewards["rewards"][index]
+	var spn = document.createElement('span');
+	var btn = document.createElement("BUTTON");
+	var btn_txt = document.createTextNode(entry["item"]);
 	
 	var btn2 = document.createElement("BUTTON");
-	var btn_txt2 = document.createTextNode("lol");
+	var btn_txt2 = document.createTextNode(entry["target"]);
 	btn.appendChild(btn_txt);
 	btn2.appendChild(btn_txt2);
 	spn.appendChild(btn);
