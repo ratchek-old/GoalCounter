@@ -1,12 +1,12 @@
 var rewards_text = '{ "rewards" : ['+
-    '{ "item": "test", "streak":  38, "target":0, "description":"another test. This one is longer"}' +
+    '{ "item": "test", "streak":  38, "target":0, "description":"another test. This one is longer"},' +
+    '{ "item": "test22", "streak":  3, "target":5, "description":"another test. This one is muuuuuuuuuuuuuuuuuuuuuuuch longer"}' +
     
     '] }';
 
 var rewards = JSON.parse(rewards_text);
 
 for (var i = 0; i < rewards["rewards"].length; i++){
-		window.alert("lol");
 		document.getElementById("reward_list").appendChild(entry_html(i));
 }
 
@@ -18,7 +18,7 @@ add_button.addEventListener( 'click', function() {
 	var linebreak = document.createElement("br");
 */
 	var linebreak = document.createElement("br");
-	document.getElementById("reward_list").appendChild(linebreak);
+//	document.getElementById("reward_list").appendChild(linebreak);
 	document.getElementById("reward_list").appendChild(create_entry());
 	
 	
