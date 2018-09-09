@@ -11,17 +11,8 @@ for (var i = 0; i < rewards["rewards"].length; i++){
 }
 
 var add_button = document.getElementById("add");
-add_button.addEventListener( 'click', function() {
-/*	var btn = document.createElement("BUTTON");
-	var btn_txt = document.createTextNode("mmmhhhmmm");
-	btn.appendChild(btn_txt);
-	var linebreak = document.createElement("br");
-*/
-	var linebreak = document.createElement("br");
-//	document.getElementById("reward_list").appendChild(linebreak);
-	document.getElementById("reward_list").appendChild(create_entry());
-	
-	
+	add_button.addEventListener( 'click', function() {
+		document.getElementById("reward_list").appendChild(create_entry());
 });
 
 function create_entry() 
@@ -33,6 +24,12 @@ function create_entry()
 	var index = rewards["rewards"].push( {"item":item_txt, "streak":0, "target":targ, "description":desc_txt} ) - 1;
 	
 	return entry_html(index)
+	
+}
+
+function inc(index, button_clicked){
+	rewards["rewards"][index]["streak"]+=1;
+	button_clicked.innerHTML = rewards["rewards"][index]["streak"];
 	
 }
 
@@ -48,7 +45,14 @@ function entry_html(index){
 	var txt = document.createTextNode(entry["item"]);
 	
 	var count_btn = document.createElement("BUTTON");
+		count_btn.setAttribute("id","lel");
+
 	var btn_txt = document.createTextNode(entry["streak"]);
+	count_btn.addEventListener("click", function(){ 
+		inc(index, this) 
+	
+	} );
+	
 	
 	var btn2 = document.createElement("BUTTON");
 	var btn_txt2 = document.createTextNode(entry["target"]);
@@ -73,10 +77,19 @@ function entry_html(index){
 }
 
 
+
+
+
+
+
+/*
 function inc() {
   count += 1;
   inc_button.innerHTML = "Click me: " + count;
 }
+
+
+
 
 var inc_button = document.getElementById("clickme");
 	count = 0;
@@ -88,5 +101,8 @@ res_button.addEventListener("click", function() {
 	  count = rewards.rewards[0].streak;
   	inc_button.innerHTML = "Click me: " + count;
   }
+  
+ 
 });
+*/
 
