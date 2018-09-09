@@ -5,6 +5,11 @@ var rewards_text = '{ "rewards" : ['+
 
 var rewards = JSON.parse(rewards_text);
 
+for (var i = 0; i < rewards["rewards"].length; i++){
+		window.alert("lol");
+		document.getElementById("reward_list").appendChild(entry_html(i));
+}
+
 var add_button = document.getElementById("add");
 add_button.addEventListener( 'click', function() {
 /*	var btn = document.createElement("BUTTON");
