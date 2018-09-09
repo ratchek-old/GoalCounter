@@ -39,7 +39,11 @@ function create_entry()
 function entry_html(index){
 	var entry = rewards["rewards"][index]
 	var spn = document.createElement('span');
+	spn.setAttribute("class","a_reward");
 	
+	var btn_spn = document.createElement('span');
+	btn_spn.setAttribute("class","buttons");
+
 	var hd = document.createElement('h3');
 	var txt = document.createTextNode(entry["item"]);
 	
@@ -56,9 +60,10 @@ function entry_html(index){
 	btn2.appendChild(btn_txt2);
 	par.appendChild(par_txt);
 	hd.appendChild(txt);
-	hd.appendChild(count_btn);
-	hd.appendChild(btn2);
-	
+	btn_spn.appendChild(count_btn);
+	btn_spn.appendChild(btn2);
+	hd.appendChild(btn_spn);
+
 
 	spn.appendChild(hd)
 /*	spn.appendChild(count_btn);
