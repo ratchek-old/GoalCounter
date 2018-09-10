@@ -4,7 +4,7 @@ var rewards_text = '{ "rewards" : ['+
     
     '] }';
 
-var rewards = JSON.parse(rewards_text);
+var rewards = JSON.parse(localStorage.rewards);
 
 for (var i = 0; i < rewards["rewards"].length; i++){
 		document.getElementById("reward_list").appendChild(entry_html(i));
@@ -14,6 +14,15 @@ var add_button = document.getElementById("add");
 	add_button.addEventListener( 'click', function() {
 		document.getElementById("reward_list").appendChild(create_entry());
 });
+
+function save(){
+	console.log("saving");
+	var rewards_txt = JSON.stringify(rewards);
+	localStorage.rewards = rewards_txt;
+}
+
+var save_button = document.getElementById("save");
+save_button.addEventListener( 'click', save );
 
 function create_entry() 
 {
