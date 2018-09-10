@@ -30,7 +30,15 @@ function create_entry()
 function inc(index, button_clicked){
 	rewards["rewards"][index]["streak"]+=1;
 	button_clicked.innerHTML = rewards["rewards"][index]["streak"];
-	
+
+
+}
+
+function res(index, button_clicked){
+	if(window.confirm("Are you sure you want to reset this counter?")) {
+		rewards["rewards"][index]["streak"]=0;
+		button_clicked.parentNode.firstChild.innerHTML = rewards["rewards"][index]["streak"];
+	}
 }
 
 function entry_html(index){
@@ -45,17 +53,18 @@ function entry_html(index){
 	var txt = document.createTextNode(entry["item"]);
 	
 	var count_btn = document.createElement("BUTTON");
-		count_btn.setAttribute("id","lel");
-
 	var btn_txt = document.createTextNode(entry["streak"]);
 	count_btn.addEventListener("click", function(){ 
-		inc(index, this) 
+		inc(index, this) ;
 	
 	} );
 	
 	
 	var btn2 = document.createElement("BUTTON");
 	var btn_txt2 = document.createTextNode(entry["target"]);
+	btn2.addEventListener("click", function(){
+		res(index, this);
+	});
 	
 	var par = document.createElement('p');
 	var par_txt = document.createTextNode(entry["description"]);
