@@ -50,6 +50,14 @@ function res(index, button_clicked){
 	}
 }
 
+function rem(index, button_clicked){
+	if(window.confirm("Are you sure you want to remove this entry?")) {
+		button_clicked.parentNode.parentNode.remove();
+		rewards["rewards"].splice(index,1);
+	}
+	
+}
+
 function entry_html(index){
 	var entry = rewards["rewards"][index]
 	var spn = document.createElement('span');
