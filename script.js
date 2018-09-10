@@ -75,12 +75,21 @@ function entry_html(index){
 		res(index, this);
 	});
 	
+	var x_btn = document.createElement("BUTTON");
+	x_btn.setAttribute("class", "delete");
+	var x_btn_txt = document.createTextNode("X");
+	x_btn.addEventListener("click", function(){
+		rem(index, this);
+	});
+	
 	var par = document.createElement('p');
 	var par_txt = document.createTextNode(entry["description"]);
 	
 	count_btn.appendChild(btn_txt);
 	btn2.appendChild(btn_txt2);
+	x_btn.appendChild(x_btn_txt)
 	par.appendChild(par_txt);
+	hd.appendChild(x_btn);
 	hd.appendChild(txt);
 	btn_spn.appendChild(count_btn);
 	btn_spn.appendChild(btn2);

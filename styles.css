@@ -40,6 +40,18 @@ button {
 
 }
 
+.delete {
+  padding: 20px;
+  background: darkred;
+  text-shadow: 1px 1px 1px #202020;
+  font-family: "Lato", sans-serif;
+  font-size: 12pt;
+  border: 1px solid black;
+  color: lightred;
+  border-radius: 5px;
+
+}
+
 .a_reward{
 	
 }
