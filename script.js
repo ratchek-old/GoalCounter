@@ -1,12 +1,6 @@
-var rewards_text = '{ "rewards" : ['+
-    '{ "item": "test", "streak":  38, "target":0, "description":"another test. This one is longer"},' +
-    '{ "item": "test22", "streak":  3, "target":5, "description":"another test. This one is muuuuuuuuuuuuuuuuuuuuuuuch longer"}' +
-    
-    '] }';
-
 var rewards = JSON.parse(localStorage.rewards);
 
-for (var i = 0; i < rewards["rewards"].length; i++){
+for (var i = 0; i < rewards.length; i++){
 		document.getElementById("reward_list").appendChild(entry_html(i));
 }
 
@@ -30,36 +24,35 @@ function create_entry()
 	var desc_txt = prompt("Whatcha gotta do?");
 	var targ = Number( prompt("How many days you gotta do it?") );
 	console.log(rewards)
-	var index = rewards["rewards"].push( {"item":item_txt, "streak":0, "target":targ, "description":desc_txt} ) - 1;
+	var index = rewards.push( {"item":item_txt, "streak":0, "target":targ, "description":desc_txt} ) - 1;
 	
 	return entry_html(index)
 	
 }
 
 function inc(index, button_clicked){
-	rewards["rewards"][index]["streak"]+=1;
-	button_clicked.innerHTML = rewards["rewards"][index]["streak"];
-
+	rewards[index]["streak"]+=1;
+	button_clicked.innerHTML = rewards[index]["streak"];
 
 }
 
 function res(index, button_clicked){
 	if(window.confirm("Are you sure you want to reset this counter?")) {
-		rewards["rewards"][index]["streak"]=0;
-		button_clicked.parentNode.firstChild.innerHTML = rewards["rewards"][index]["streak"];
+		rewards[index]["streak"]=0;
+		button_clicked.parentNode.firstChild.innerHTML = rewards[index]["streak"];
 	}
 }
 
 function rem(index, button_clicked){
 	if(window.confirm("Are you sure you want to remove this entry?")) {
 		button_clicked.parentNode.parentNode.remove();
-		rewards["rewards"].splice(index,1);
+		rewards.splice(index,1);
 	}
 	
 }
 
 function entry_html(index){
-	var entry = rewards["rewards"][index]
+	var entry = rewards[index]
 	var spn = document.createElement('span');
 	spn.setAttribute("class","a_reward");
 	
