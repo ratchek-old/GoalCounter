@@ -1,7 +1,10 @@
 var rewards = JSON.parse(localStorage.rewards);
 
 for (var i = 0; i < rewards.length; i++){
-		document.getElementById("reward_list").appendChild(entry_html(i));
+	var entry = document.getElementById("reward_list").appendChild(entry_html(i));
+	if (rewards[i]["streak"] >= rewards[i]["target"]){
+		mark_accomplished(entry);
+	}
 }
 
 var add_button = document.getElementById("add");
@@ -29,10 +32,26 @@ function create_entry()
 	return entry_html(index)
 	
 }
+function mark_accomplished(entry){
+/*	button_clicked.style.backgroundColor = "#003300";	
+	button_clicked.parentNode.children[1].style.backgroundColor = "#003300";	
+	button_clicked.parentNode.parentNode.style.textShadow = "1px 1px #001100";	
+	button_clicked.parentNode.parentNode.style.color = "#003300";	
+	button_clicked.parentNode.parentNode.parentNode.children[1].style.color = "#003300";	
+*/
+	entry.children[0].children[1].children[0].style.backgroundColor = "#003300";	
+	entry.children[0].children[1].children[1].style.backgroundColor = "#003300";	
+	entry.children[0].style.textShadow = "1px 1px #001100";	
+	entry.children[0].style.color = "#003300";	
+	entry.children[1].style.color = "#003300";	
+}
 
 function inc(index, button_clicked){
 	rewards[index]["streak"]+=1;
 	button_clicked.innerHTML = rewards[index]["streak"];
+	if (rewards[index]["streak"] == rewards[index]["target"]){
+		mark_accomplished(button_clicked.parentNode.parentNode.parentNode)
+	}
 
 }
 
