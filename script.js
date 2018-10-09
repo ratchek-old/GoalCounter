@@ -1,5 +1,9 @@
-var rewards = JSON.parse(localStorage.rewards);
-
+if(localStorage.rewards) {
+        var rewards = JSON.parse(localStorage.rewards);
+}
+else {
+        var rewards = JSON.parse('[]');
+}
 for (var i = 0; i < rewards.length; i++){
 	var entry = document.getElementById("reward_list").appendChild(entry_html(i));
 	if (rewards[i]["streak"] >= rewards[i]["target"]){
