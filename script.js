@@ -26,7 +26,6 @@ function create_entry()
 	var item_txt = prompt("What's the reward gon' be?");
 	var desc_txt = prompt("Whatcha gotta do?");
 	var targ = Number( prompt("How many days you gotta do it?") );
-	console.log(rewards)
 	var index = rewards.push( {"item":item_txt, "streak":0, "target":targ, "description":desc_txt} ) - 1;
 	
 	return entry_html(index)
