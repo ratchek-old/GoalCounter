@@ -36,12 +36,6 @@ function create_entry()
 	
 }
 function mark_accomplished(entry){
-/*	button_clicked.style.backgroundColor = "#003300";	
-	button_clicked.parentNode.children[1].style.backgroundColor = "#003300";	
-	button_clicked.parentNode.parentNode.style.textShadow = "1px 1px #001100";	
-	button_clicked.parentNode.parentNode.style.color = "#003300";	
-	button_clicked.parentNode.parentNode.parentNode.children[1].style.color = "#003300";	
-*/
 	entry.children[0].children[1].children[0].style.backgroundColor = "#003300";	
 	entry.children[0].children[1].children[1].style.backgroundColor = "#003300";	
 	entry.children[0].style.textShadow = "1px 1px #001100";	
@@ -120,9 +114,7 @@ function entry_html(index){
 
 
 	spn.appendChild(hd)
-/*	spn.appendChild(count_btn);
-	spn.appendChild(btn2);
-*/	spn.appendChild(par)
+	spn.appendChild(par)
 	return spn	;
 }
 
@@ -132,27 +124,5 @@ function entry_html(index){
 
 
 
-/*
-function inc() {
-  count += 1;
-  inc_button.innerHTML = "Click me: " + count;
-}
 
-
-
-
-var inc_button = document.getElementById("clickme");
-	count = 0;
-inc_button.addEventListener("click", inc);
-
-var res_button = document.getElementById("reset");
-res_button.addEventListener("click", function() {
-  if(window.confirm("Are you sure you want to reset the counter?")) {
-	  count = rewards.rewards[0].streak;
-  	inc_button.innerHTML = "Click me: " + count;
-  }
-  
- 
-});
-*/
 
