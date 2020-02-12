@@ -13,7 +13,10 @@ for (var i = 0; i < rewards.length; i++){
 
 var add_button = document.getElementById("add");
 	add_button.addEventListener( 'click', function() {
-		document.getElementById("reward_list").appendChild(create_entry());
+                entry = create_entry();
+                if (entry !=0){
+        		document.getElementById("reward_list").appendChild(entry);
+                }
 });
 
 function save(){
@@ -21,17 +24,21 @@ function save(){
 	var rewards_txt = JSON.stringify(rewards);
 	localStorage.rewards = rewards_txt;
 }
-
+/*
 var save_button = document.getElementById("save");
 save_button.addEventListener( 'click', save );
-
+*/
 function create_entry() 
 {
 	var item_txt = prompt("What's the reward gon' be?");
 	var desc_txt = prompt("Whatcha gotta do?");
 	var targ = Number( prompt("How many days you gotta do it?") );
+        if(isNaN(targ) || targ < 0 || parseInt(targ) != targ){
+                window.alert("Sorry, that's not a valid number of days. Try a positive integer");
+                return 0;
+        }
 	var index = rewards.push( {"item":item_txt, "streak":0, "target":targ, "description":desc_txt} ) - 1;
-	
+	save();
 	return entry_html(index)
 	
 }
@@ -40,7 +47,8 @@ function mark_accomplished(entry){
 	entry.children[0].children[1].children[1].style.backgroundColor = "#003300";	
 	entry.children[0].style.textShadow = "1px 1px #001100";	
 	entry.children[0].style.color = "#003300";	
-	entry.children[1].style.color = "#003300";	
+	entry.children[1].style.color = "#003300";
+
 }
 
 function inc(index, button_clicked){
@@ -49,6 +57,7 @@ function inc(index, button_clicked){
 	if (rewards[index]["streak"] == rewards[index]["target"]){
 		mark_accomplished(button_clicked.parentNode.parentNode.parentNode)
 	}
+        save();
 
 }
 
@@ -57,6 +66,7 @@ function res(index, button_clicked){
 		rewards[index]["streak"]=0;
 		button_clicked.parentNode.firstChild.innerHTML = rewards[index]["streak"];
 	}
+        save();
 }
 
 function rem(index, button_clicked){
@@ -64,6 +74,7 @@ function rem(index, button_clicked){
 		button_clicked.parentNode.parentNode.remove();
 		rewards.splice(index,1);
 	}
+        save();
 	
 }
 
